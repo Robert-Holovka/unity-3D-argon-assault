@@ -5,16 +5,23 @@ namespace Scripts
     internal class Enemy : MonoBehaviour
     {
         [SerializeField] GameObject deathFX;
-        [SerializeField] Transform spawnedAtRuntimeParent;
-
         [SerializeField] int scorePerHit = 12;
         [SerializeField] int hits = 1;
 
+        private Transform spawnedAtRuntimeParent;
         private ScoreDisplay scoreBoard;
+        private MeshRenderer meshRenderer;
+        private bool isDead = default;
+
+        private void Awake()
+        {
+            spawnedAtRuntimeParent = GameObject.FindWithTag("SpawnAtRuntime").transform;
+            scoreBoard = FindObjectOfType<ScoreDisplay>();
+            meshRenderer = GetComponent<MeshRenderer>();
+        }
 
         private void Start()
         {
-            scoreBoard = FindObjectOfType<ScoreDisplay>();
             AddBoxCollider();
         }
 
@@ -26,19 +33,23 @@ namespace Scripts
 
         private void OnParticleCollision(GameObject other)
         {
+            if (isDead) return;
+
             scoreBoard.OnEnemyHit(scorePerHit);
             hits--;
 
             if (hits <= 0)
             {
-                KillEnemy();
+                OnDeath();
             }
         }
 
-        private void KillEnemy()
+        private void OnDeath()
         {
-            GameObject deathVFX = Instantiate(deathFX, transform.position, Quaternion.identity);
-            deathVFX.transform.parent = spawnedAtRuntimeParent;
+            isDead = true;
+            GameObject deathEffects = Instantiate(deathFX, transform.position, Quaternion.identity);
+            deathEffects.transform.parent = spawnedAtRuntimeParent;
+            meshRenderer.enabled = false;
             Destroy(gameObject);
         }
     }

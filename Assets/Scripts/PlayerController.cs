@@ -10,8 +10,8 @@ namespace Scripts
         [SerializeField] float yRange = 3f;
 
         [Header("Rotation")]
-        [Range(-1, 0)] [SerializeField] float pitchFactor = 1f;
-        [Range(-1, 0)] [SerializeField] float yawFactor = 1f;
+        [SerializeField] float pitchFactor = 1f;
+        [SerializeField] float yawFactor = 1f;
 
         [SerializeField] GameObject[] guns;
 

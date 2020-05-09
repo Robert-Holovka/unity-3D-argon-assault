@@ -21,7 +21,7 @@ namespace Scripts
         public void OnEnemyHit(int score)
         {
             this.score += score;
-            scoreText.text = score.ToString();
+            scoreText.text = this.score.ToString();
         }
     }
 }
