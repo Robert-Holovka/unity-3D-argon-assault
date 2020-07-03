@@ -6,12 +6,9 @@ namespace Scripts
     internal class CollisionHandler : MonoBehaviour
     {
         [SerializeField] float levelLoadDelay = 1f;
-        [SerializeField] GameObject deathFX;
+        [SerializeField] GameObject deathFX = default;
 
-        private void OnTriggerEnter(Collider other)
-        {
-            StartDeathSequence();
-        }
+        private void OnTriggerEnter(Collider other) => StartDeathSequence();
 
         private void StartDeathSequence()
         {
@@ -20,9 +17,6 @@ namespace Scripts
             Invoke("ReloadScene", levelLoadDelay);
         }
 
-        private void ReloadScene()
-        {
-            SceneManager.LoadScene(1);
-        }
+        private void ReloadScene() => SceneManager.LoadScene(1);
     }
 }

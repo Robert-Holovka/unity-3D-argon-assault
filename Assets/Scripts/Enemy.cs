@@ -4,7 +4,7 @@ namespace Scripts
 {
     internal class Enemy : MonoBehaviour
     {
-        [SerializeField] GameObject deathFX;
+        [SerializeField] GameObject deathFX = default;
         [SerializeField] int scorePerHit = 12;
         [SerializeField] int hits = 1;
 
@@ -20,10 +20,7 @@ namespace Scripts
             meshRenderer = GetComponent<MeshRenderer>();
         }
 
-        private void Start()
-        {
-            AddBoxCollider();
-        }
+        private void Start() => AddBoxCollider();
 
         private void AddBoxCollider()
         {

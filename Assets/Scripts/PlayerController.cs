@@ -13,16 +13,13 @@ namespace Scripts
         [SerializeField] float pitchFactor = 1f;
         [SerializeField] float yawFactor = 1f;
 
-        [SerializeField] GameObject[] guns;
+        [SerializeField] GameObject[] guns = default;
 
         private float xInput, yInput;
         private bool isControlEnabled = true;
         private Vector3 projectileCenter;
 
-        private void Start()
-        {
-            projectileCenter = new Vector3(0, 0, Camera.main.farClipPlane);
-        }
+        private void Start() => projectileCenter = new Vector3(0, 0, Camera.main.farClipPlane);
 
         private void Update()
         {

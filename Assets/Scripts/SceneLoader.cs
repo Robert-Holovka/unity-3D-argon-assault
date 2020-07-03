@@ -7,14 +7,7 @@ namespace Scripts
     {
         [SerializeField] float splashScreenDuration = 2f;
 
-        private void Start()
-        {
-            Invoke("LoadFirstScene", splashScreenDuration);
-        }
-
-        private void LoadFirstScene()
-        {
-            SceneManager.LoadScene(1);
-        }
+        private void Start() => Invoke("LoadFirstScene", splashScreenDuration);
+        private void LoadFirstScene() => SceneManager.LoadScene(1);
     }
 }
