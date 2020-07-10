@@ -2,6 +2,10 @@
 
 <h3> Avoid obstacles and shoot the enemies. </hr>
 
+| |
+| :--------------------------------------------------------------: |
+| ![Gameplay](Readme%20Resources/combat.gif) |
+
 <h3>Controls</h3>
 
 |           Input          |     Action    |
