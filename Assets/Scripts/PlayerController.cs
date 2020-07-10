@@ -23,6 +23,11 @@ namespace Scripts
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
+
             if (!isControlEnabled) return;
 
             xInput = Input.GetAxis("Horizontal");
@@ -35,7 +40,6 @@ namespace Scripts
 
         private void ProcessTranslation()
         {
-            // Local position jer timeline upravlja ovime !!!
             Vector3 currentPos = transform.localPosition;
 
             float xOffset = xInput * translationSpeed * Time.deltaTime;
